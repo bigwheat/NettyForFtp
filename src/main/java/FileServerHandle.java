@@ -123,7 +123,8 @@ public class FileServerHandle extends SimpleChannelInboundHandler<FullHttpReques
 
 
     public  void indexHtml(ChannelHandlerContext ctx,FullHttpRequest request) throws Exception {
-        File html = new File(System.getProperty("user.dir") + "/index.html");
+        String filePath = FileServerHandle.class.getClassLoader().getResource("index.html").getFile();
+        File html = new File(filePath);
         StringBuilder result = new StringBuilder();
         try{
             BufferedReader br = new BufferedReader(new FileReader(html));
